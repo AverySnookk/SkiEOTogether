@@ -1,0 +1,112 @@
+# Ski-E-O Together
+
+Multiplayer for **Ski-E-O!**: host your resort or join a friend's and build it together, live.
+
+## Download
+
+Get the newest **`SkiEOTogether-…-manual-install.zip`** from the [Releases page](../../releases/latest),
+then follow *Install* below. Everyone playing together needs the same Together version and the same Ski-E-O build.
+
+
+Play in a friend's resort and build it together. One player hosts; up to 7 friends join, get a copy of the
+resort automatically, and from then on what anyone builds shows up for everyone.
+
+## How to play
+
+Everything is in the game: click **Together** on the main menu (next to Mods) or in the pause menu (Esc).
+
+**Host**
+- *Start a NEW resort and host it*: the game's own New Game screen opens; once your new resort is up it is
+  saved and hosted automatically.
+- *Host one of your saves*: pick any save from the list (autosaves behind *Show autosaves too*).
+- In the pause menu: *Host THIS resort* saves the resort you're in and starts hosting.
+
+**Join**
+- Click the friend who is hosting in the **Steam friends** list (people playing Ski-E-O have a dot).
+  No address, VPN or port needed: it goes through Steam's relay network.
+- Or type an address (LAN, Radmin/Tailscale/ZeroTier VPN address, or a forwarded TCP port 7777) and click Join.
+- The host's resort downloads and opens by itself as `Together_<resort>`, a separate copy.
+
+**Session** tab: players, **Refresh resort for everyone** (host) / **Ask the host to refresh** (friend),
+**Leave session**. Name and an optional password are at the top of the menu (everyone types the same password).
+
+Pop-ups at the top of the screen tell you when someone joins or leaves, and when a refresh is needed.
+
+## What is shared
+
+| Shared live | |
+|---|---|
+| Buildings, decorations, park features, snow guns | placed, moved, removed, opened/closed by anyone |
+| Trails | drawn, extended, removed, renamed, difficulty/grooming/night-skiing, by anyone |
+| Lifts | built, removed, speed and hours, by anyone (can be opened and bulldozed everywhere); a friend's lift links to its trails and starts on everyone's game |
+| Walkways (paths) | painted or erased by anyone; shared about half a second after you finish a stroke |
+| Cleared brush / ground cover | cleared by anyone; shared about half a second after you finish |
+| Felled trees | cleared by anyone (clearing tool, bulldozing, trail and lift corridors); shared within a second, never charged twice |
+| Terrain shaping | raise, lower, smooth, flatten by anyone; shared about 2 s after you finish a stroke (applied in ~15 ms, no reload) |
+| Base area and villages | follow from the shared buildings, lifts and walkways, so they come out the same on every game |
+| Guests | each game runs its own guests through the normal arrivals; a friend's crowd is trimmed if it grows bigger than the host's |
+| Money | the host's balance is the resort's balance; friends' builds are charged to it |
+| Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone |
+| Resort management | open/closed status, discipline policy, ticket price, marketing campaigns |
+| Staff | hiring, firing and assigning staff (lifties too), by anyone. Each game's list of job candidates changes over time, so a friend can only hire someone who is also on the host's list; otherwise the hire is undone with a message (Refresh lines the lists up again) |
+| Players | everyone sees everyone else as a skier/walker with a name tag |
+
+Nothing needs a refresh any more in normal play: no reload, no camera jump, no freeze.
+
+Walkways, brush and terrain: if two players change the same kind at the very same moment, the last one to finish wins
+and the other is undone. Take turns.
+
+Guests are the same crowd size and go to the same lifts, trails and buildings, but they are not the same individual
+people on every screen (copying hundreds of guests live would lag every game).
+
+### Resort refresh
+Still there as a safety net: the host's game saves (over the resort being hosted, like pressing Save), everyone reloads
+it (a few seconds) and lands back where their camera was, at the same speed. It never happens by itself. Use it only
+if something looks different on two screens.
+
+## Session logs (for reporting lag or errors)
+Every time you host or join, Together writes a log to `mods\SkiEOTogether\logs\`, named like
+`Together_host_2026-11-18_17-20-35.log` or `Together_friend_...`. It records your game build and Together version,
+everything that was shared, any errors, every time the game froze for more than half a second (and what the mod was
+doing at that moment), any mod step that took longer than 40 ms, a status line every minute (players, buildings,
+lifts, guests, speed, money), a line per lift (status, liftie, riders, queue posts), the network messages of the last
+minute, a report on every building or lift copied from the other player, and on the friend's side a CHECK every
+30 s comparing the whole game with the host's (a DESYNC line names anything that differs).
+
+If something lags or breaks: open the Together menu, **Session** tab, **Open session logs**, and send the newest file
+(both the host's and the friend's if you can). A pause right after joining, while the host's resort loads, is normal
+and is labelled as such in the log.
+
+## Same game version
+You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL7918").
+Together refuses to connect different builds and tells you why. Saves made by a newer build can't be opened by an older one.
+Walkway, brush, tree and terrain sharing and lift linking use a small native module (`Native\TogetherNative.dll`) matched
+to the game's code. If a game update changes that code, the log says so and those fall back to being shared through a
+refresh; everything else keeps working.
+
+## Install (everyone)
+
+Together is shared directly (not through the Mod Manager catalog, which doesn't allow its network helper program).
+
+1. Needs UE4SS 4 (the same setup Z's Mod Manager installs for other Ski-E-O mods; installing any catalog mod once
+   sets it up) and Steam running.
+2. Close the game. Unzip so that the `SkiEOTogether` folder lands in `...\steamapps\common\skieogame\mods\`
+   (you should end up with `mods\SkiEOTogether\mod.ini`). Updating: replace the folder; keep its `bridge` folder if
+   you want to keep your name and password settings.
+3. **Everyone must use the same Together version and the same Ski-E-O build** (the main menu shows the build).
+4. A small helper (`Network\TogetherNet.exe`) starts in the background with the game and closes ~20 s after it;
+   while it runs, Steam shows Ski-E-O as running. Windows may ask to allow it through the firewall the first time
+   you host: allow it, or friends can't connect. It isn't code-signed, so some antivirus tools may ask about it.
+   Ctrl+F9 outside a menu opens its diagnostics window.
+
+## Good to know
+
+- Your own resorts are never touched by joining; the host's own save is written at each refresh.
+- Guests walking around are simulated by each game separately, so crowds differ between refreshes.
+- **Ctrl+F10** moves your camera to the next player.
+- Logs for bug reports: `SkiEOTogether\bridge\together.log`.
+
+## Uninstall
+
+Delete the `SkiEOTogether` folder. Joined copies are the `Together_*` saves in
+`%LOCALAPPDATA%\Ski-E-O\SaveGames` (delete them while the game is running, or Steam Cloud restores them).
