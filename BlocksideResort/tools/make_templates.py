@@ -128,11 +128,11 @@ write('small_lodge', 'Small Lodge', 9, 7, 9, PAL_LODGE, lodge, [4, 1, 8])
 # Lift lower station: open platform with four posts and a roof; uphill is template north (-z).
 def lower(x, y, z):
     w, d = 5, 7
-    if y == 0: return 'F' if not (x == 2 and z == 6) else 'M'
+    if y == 0: return 'F' if not (x == 1 and z == 3) else 'M'   # yellow loading mark under the up-line
     if (x, y, z) == (2, 1, 3): return '@'
     if y == 5: return 'R'
     if corner(x, z, w, d): return 'P'
-    if y == 4 and edge(x, z, w, d): return 'B'
+    if y == 4 and x in (0, w - 1): return 'B'   # side beams only: chairs pass through the ends
     if (x, y, z) in ((0, 1, 5), (4, 1, 5)): return 'Q'
     return '.'
 
@@ -147,7 +147,7 @@ def upper(x, y, z):
     if (x, y, z) == (2, 1, 2): return '@'
     if y == 5: return 'R'
     if corner(x, z, w, d): return 'P'
-    if y == 4 and edge(x, z, w, d): return 'B'
+    if y == 4 and x in (0, w - 1): return 'B'
     return '.'
 
 write('lift_upper_station', 'Lift Upper Station', 5, 6, 5, PAL_LOWER, upper, [2, 1, 0])

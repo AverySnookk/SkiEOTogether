@@ -12,6 +12,8 @@ public final class EditJournal {
 
     public String id;
     public String label;
+    public String trailId;
+    public String owner;
     public final List<Edit> edits = new ArrayList<>();
     public int applied;
     public boolean undoing;

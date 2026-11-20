@@ -61,6 +61,8 @@ public final class Resort {
     public final Map<String, Trail> trails = new LinkedHashMap<>();
     public final Map<String, SnowGun> snowGuns = new LinkedHashMap<>();
     public final Snowpack snowpack = new Snowpack();
+    /** Trail earthwork jobs (kept after completion so they can be undone). */
+    public final Map<String, dev.blockside.core.terrain.EditJournal> journals = new LinkedHashMap<>();
     public final Weather weather = new Weather();
 
     public long counter;
@@ -502,7 +504,7 @@ public final class Resort {
     /** Runs whole game hours that have elapsed. Called from the server tick. */
     public void tickHours(long gameTime) {
         long hour = Math.floorDiv(gameTime, 1000L);
-        if (lastHourTick < 0) { lastHourTick = hour; return; }
+        if (lastHourTick < 0 || hour < lastHourTick) { lastHourTick = hour; return; } // first run or clock set back
         int guard = 0;
         while (lastHourTick < hour && guard++ < 48) {
             lastHourTick++;

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "blockside:block/job_block"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "blockside:block/snow_gun"
+    },
+    "facing=east": {
+      "model": "blockside:block/snow_gun",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "blockside:block/snow_gun",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "blockside:block/snow_gun",
+      "y": 270
+    }
+  }
+}

@@ -14,5 +14,5 @@ public final class LiftParams {
     public double maxAngle = 40;
     public int minLength = 12;
     /** Half the distance between up and down lines. */
-    public double lineOffset = 1.5;
+    public double lineOffset = 1.0;
 }
