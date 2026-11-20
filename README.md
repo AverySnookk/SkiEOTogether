@@ -36,7 +36,9 @@ Pop-ups at the top of the screen tell you when someone joins or leaves, and when
 everyone can see what you are talking about. Each player has their own colour (the host is gold; then blue, red,
 green, purple, orange, cyan, pink). Everyone has one ping: middle-click somewhere else and your arrow moves there.
 Middle-click near a ping to remove it (it doesn't have to be exact). Holding the middle button still turns the camera
-as usual. A player's ping goes away when they leave.
+as usual. A player's ping goes away when they leave. A short sound plays when a friend pings, and a ping that is off
+your screen shows as a badge at the edge with an arrow pointing to it. Friends' name tags and the dots in the player
+list use the same colours.
 
 ## What is shared
 
