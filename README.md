@@ -30,6 +30,12 @@ Everything is in the game: click **Together** on the main menu (next to Mods) or
 **Session** tab: players, **Refresh resort for everyone** (host) / **Ask the host to refresh** (friend),
 **Leave session**. Name and an optional password are at the top of the menu (everyone types the same password).
 
+**Lost connection**: if a friend's connection drops (Wi-Fi blip, VPN hiccup), their game keeps the resort open and
+reconnects by itself for up to 90 seconds. They can keep playing meanwhile; what they build is shared once they are
+back. If the host's resort is still the same one, nothing is downloaded again: the friend's game just catches up on what
+changed (usually well under a second). If the host refreshed or opened another resort meanwhile, the friend's game
+downloads it again, as when joining. After 90 seconds without the host, the friend's game returns to the main menu.
+
 Pop-ups at the top of the screen tell you when someone joins or leaves, and when a refresh is needed.
 
 **Pings**: quickly click the **middle mouse button** on any spot to drop a big arrow there with your name, so
@@ -126,3 +132,4 @@ Together is shared directly (not through the Mod Manager catalog, which doesn't 
 
 Delete the `SkiEOTogether` folder. Joined copies are the `Together_*` saves in
 `%LOCALAPPDATA%\Ski-E-O\SaveGames` (delete them while the game is running, or Steam Cloud restores them).
+
