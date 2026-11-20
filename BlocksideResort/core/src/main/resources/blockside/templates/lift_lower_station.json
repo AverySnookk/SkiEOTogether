@@ -1,0 +1,96 @@
+{
+ "id": "lift_lower_station",
+ "name": "Lift Lower Station",
+ "size": [
+  5,
+  6,
+  7
+ ],
+ "entrance": [
+  2,
+  1,
+  6
+ ],
+ "palette": {
+  "F": {
+   "block": "minecraft:polished_andesite",
+   "stage": "FOUNDATION"
+  },
+  "M": {
+   "block": "minecraft:yellow_concrete",
+   "stage": "FOUNDATION"
+  },
+  "P": {
+   "block": "minecraft:stripped_dark_oak_log",
+   "stage": "STRUCTURE"
+  },
+  "B": {
+   "block": "minecraft:dark_oak_planks",
+   "stage": "STRUCTURE"
+  },
+  "R": {
+   "block": "minecraft:dark_oak_slab",
+   "stage": "STRUCTURE"
+  },
+  "Q": {
+   "block": "minecraft:lantern",
+   "stage": "EQUIPMENT"
+  }
+ },
+ "layers": [
+  [
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFMFF"
+  ],
+  [
+   "P...P",
+   ".....",
+   ".....",
+   "..@..",
+   ".....",
+   "Q...Q",
+   "P...P"
+  ],
+  [
+   "P...P",
+   ".....",
+   ".....",
+   ".....",
+   ".....",
+   ".....",
+   "P...P"
+  ],
+  [
+   "P...P",
+   ".....",
+   ".....",
+   ".....",
+   ".....",
+   ".....",
+   "P...P"
+  ],
+  [
+   "PBBBP",
+   "B...B",
+   "B...B",
+   "B...B",
+   "B...B",
+   "B...B",
+   "PBBBP"
+  ],
+  [
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR"
+  ]
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "startingCash": 25000,
+  "levelXp": [0, 200, 500, 1000, 1800, 3000],
+  "milestones": [
+    {"id": "first_revenue", "kind": "REVENUE", "threshold": 1000, "target": "", "sustainTicks": 0, "xp": 100,
+     "label": "First $1,000 from guests"},
+    {"id": "revenue_10k", "kind": "REVENUE", "threshold": 10000, "target": "", "sustainTicks": 0, "xp": 250,
+     "label": "$10,000 from guests"},
+    {"id": "build_any", "kind": "CONSTRUCTION", "threshold": 0, "target": "*", "sustainTicks": 0, "xp": 50,
+     "label": "New kind of building completed"},
+    {"id": "first_lift", "kind": "CONSTRUCTION", "threshold": 0, "target": "beginner_lift", "sustainTicks": 0, "xp": 75,
+     "label": "First chairlift"},
+    {"id": "rep_60", "kind": "REPUTATION", "threshold": 60, "target": "", "sustainTicks": 2000, "xp": 100,
+     "label": "Reputation 60 held for 2 hours"},
+    {"id": "rep_75", "kind": "REPUTATION", "threshold": 75, "target": "", "sustainTicks": 24000, "xp": 300,
+     "label": "Reputation 75 held for a day"}
+  ],
+  "ticketPrice": 45,
+  "rentalPrice": 25,
+  "crewBlocksPerStep": 2,
+  "crewStepTicks": 10,
+  "crewDailyWage": 60,
+  "claimRadius": 160,
+  "openMembership": true,
+  "baseArrivalsPerHour": 14,
+  "openHour": 8,
+  "closeHour": 17,
+  "liftPowerCostPerHour": 12,
+  "snowGunCostPerHour": 18,
+  "snowGunSwePerHour": 0.05,
+  "snowGunRange": 10,
+  "snowGunWidth": 6,
+  "snowStepTicks": 100,
+  "climate": {
+    "autumnDays": 3, "winterDays": 14, "springDays": 5, "summerDays": 2,
+    "autumnTemp": 2, "winterTemp": -7, "springTemp": 3, "summerTemp": 14,
+    "diurnalAmplitude": 4, "referenceY": 64, "lapsePerBlock": 0.04,
+    "snowGunCutoff": -2
+  }
+}

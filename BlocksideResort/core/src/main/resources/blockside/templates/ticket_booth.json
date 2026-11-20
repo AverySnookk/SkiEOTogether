@@ -1,0 +1,85 @@
+{
+ "id": "ticket_booth",
+ "name": "Ticket Booth",
+ "size": [
+  5,
+  5,
+  5
+ ],
+ "entrance": [
+  2,
+  1,
+  4
+ ],
+ "palette": {
+  "F": {
+   "block": "minecraft:stone_bricks",
+   "stage": "FOUNDATION"
+  },
+  "W": {
+   "block": "minecraft:spruce_planks",
+   "stage": "STRUCTURE"
+  },
+  "L": {
+   "block": "minecraft:stripped_spruce_log",
+   "stage": "STRUCTURE"
+  },
+  "G": {
+   "block": "minecraft:glass_pane",
+   "stage": "STRUCTURE"
+  },
+  "R": {
+   "block": "minecraft:dark_oak_slab",
+   "stage": "STRUCTURE"
+  },
+  "B": {
+   "block": "minecraft:barrel",
+   "stage": "EQUIPMENT"
+  },
+  "N": {
+   "block": "minecraft:lantern",
+   "stage": "EQUIPMENT"
+  },
+  "K": {
+   "block": "minecraft:cartography_table",
+   "stage": "EQUIPMENT"
+  }
+ },
+ "layers": [
+  [
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFFFF",
+   "FFFFF"
+  ],
+  [
+   "LWWWL",
+   "WB.KW",
+   "W.@.W",
+   "W...W",
+   "LW.WL"
+  ],
+  [
+   "LWWWL",
+   "GN..G",
+   "G...G",
+   "G...G",
+   "LG.GL"
+  ],
+  [
+   "LLLLL",
+   "L...L",
+   "L...L",
+   "L...L",
+   "LLLLL"
+  ],
+  [
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR",
+   "RRRRR"
+  ]
+ ]
+}

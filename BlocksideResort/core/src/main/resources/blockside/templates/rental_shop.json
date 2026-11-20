@@ -1,0 +1,112 @@
+{
+ "id": "rental_shop",
+ "name": "Rental Shop",
+ "size": [
+  7,
+  6,
+  7
+ ],
+ "entrance": [
+  3,
+  1,
+  6
+ ],
+ "palette": {
+  "F": {
+   "block": "minecraft:polished_andesite",
+   "stage": "FOUNDATION"
+  },
+  "W": {
+   "block": "minecraft:birch_planks",
+   "stage": "STRUCTURE"
+  },
+  "L": {
+   "block": "minecraft:stripped_dark_oak_log",
+   "stage": "STRUCTURE"
+  },
+  "G": {
+   "block": "minecraft:glass_pane",
+   "stage": "STRUCTURE"
+  },
+  "R": {
+   "block": "minecraft:spruce_slab",
+   "stage": "STRUCTURE"
+  },
+  "P": {
+   "block": "minecraft:spruce_fence",
+   "stage": "EQUIPMENT"
+  },
+  "S": {
+   "block": "minecraft:light_blue_carpet",
+   "stage": "EQUIPMENT"
+  },
+  "B": {
+   "block": "minecraft:barrel",
+   "stage": "EQUIPMENT"
+  },
+  "K": {
+   "block": "minecraft:loom",
+   "stage": "EQUIPMENT"
+  },
+  "N": {
+   "block": "minecraft:lantern",
+   "stage": "EQUIPMENT"
+  }
+ },
+ "layers": [
+  [
+   "FFFFFFF",
+   "FFFFFFF",
+   "FFFFFFF",
+   "FFFFFFF",
+   "FFFFFFF",
+   "FFFFFFF",
+   "FFFFFFF"
+  ],
+  [
+   "LWWWWWL",
+   "WPP.PPW",
+   "W.....W",
+   "W..@..W",
+   "WK...BW",
+   "W.....W",
+   "LW...WL"
+  ],
+  [
+   "LWWWWWL",
+   "WSS.SSW",
+   "G.....G",
+   "W.....W",
+   "G.....G",
+   "W.....W",
+   "LG...GL"
+  ],
+  [
+   "LWWWWWL",
+   "W.....W",
+   "W.....W",
+   "W..N..W",
+   "W.....W",
+   "W.....W",
+   "LWWWWWL"
+  ],
+  [
+   "LLLLLLL",
+   "L.....L",
+   "L.....L",
+   "L.....L",
+   "L.....L",
+   "L.....L",
+   "LLLLLLL"
+  ],
+  [
+   "RRRRRRR",
+   "RRRRRRR",
+   "RRRRRRR",
+   "RRRRRRR",
+   "RRRRRRR",
+   "RRRRRRR",
+   "RRRRRRR"
+  ]
+ ]
+}

@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.neoforged.net/releases' }
+    }
+}
+
+rootProject.name = 'BlocksideResort'
+
+// core: plain-Java resort simulation (no Minecraft dependency, unit-tested).
+include 'core'
+
+// neoforge: the Minecraft mod. Needs maven.neoforged.net + Mojang servers.
+// Build only the simulation with:  ./gradlew -PcoreOnly :core:test
+if (!providers.gradleProperty('coreOnly').isPresent()) {
+    include 'neoforge'
+}

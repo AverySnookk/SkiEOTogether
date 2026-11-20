@@ -1,0 +1,139 @@
+{
+ "id": "small_lodge",
+ "name": "Small Lodge",
+ "size": [
+  9,
+  7,
+  9
+ ],
+ "entrance": [
+  4,
+  1,
+  8
+ ],
+ "palette": {
+  "F": {
+   "block": "minecraft:stone_bricks",
+   "stage": "FOUNDATION"
+  },
+  "W": {
+   "block": "minecraft:spruce_planks",
+   "stage": "STRUCTURE"
+  },
+  "L": {
+   "block": "minecraft:spruce_log",
+   "stage": "STRUCTURE"
+  },
+  "G": {
+   "block": "minecraft:glass_pane",
+   "stage": "STRUCTURE"
+  },
+  "R": {
+   "block": "minecraft:dark_oak_planks",
+   "stage": "STRUCTURE"
+  },
+  "r": {
+   "block": "minecraft:dark_oak_slab",
+   "stage": "STRUCTURE"
+  },
+  "C": {
+   "block": "minecraft:cobblestone",
+   "stage": "STRUCTURE"
+  },
+  "H": {
+   "block": "minecraft:campfire",
+   "stage": "EQUIPMENT"
+  },
+  "T": {
+   "block": "minecraft:spruce_fence",
+   "stage": "EQUIPMENT"
+  },
+  "S": {
+   "block": "minecraft:spruce_slab",
+   "stage": "EQUIPMENT"
+  },
+  "N": {
+   "block": "minecraft:lantern",
+   "stage": "EQUIPMENT"
+  }
+ },
+ "layers": [
+  [
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF",
+   "FFFFFFFFF"
+  ],
+  [
+   "LWWWWWWWL",
+   "W...C...W",
+   "W...H...W",
+   "W.......W",
+   "W.S.@.S.W",
+   "W.T...T.W",
+   "W.S...S.W",
+   "W.......W",
+   "LWWW.WWWL"
+  ],
+  [
+   "LWGWWWGWL",
+   "W...C...W",
+   "G.......G",
+   "W.......W",
+   "W.......W",
+   "W.......W",
+   "G.......G",
+   "W.......W",
+   "LWGW.WGWL"
+  ],
+  [
+   "LWGWWWGWL",
+   "W...C...W",
+   "G.......G",
+   "W.......W",
+   "W.......W",
+   "W.......W",
+   "G.......G",
+   "W.......W",
+   "LWGWWWGWL"
+  ],
+  [
+   "LWWWWWWWL",
+   "W.......W",
+   "W.......W",
+   "W.......W",
+   "W.......W",
+   "W...N...W",
+   "W.......W",
+   "W.......W",
+   "LWWWWWWWL"
+  ],
+  [
+   "LLLLLLLLL",
+   "L.......L",
+   "L.......L",
+   "L.......L",
+   "L.......L",
+   "L.......L",
+   "L.......L",
+   "L.......L",
+   "LLLLLLLLL"
+  ],
+  [
+   "rrrrrrrrr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rRRRRRRRr",
+   "rrrrrrrrr"
+  ]
+ ]
+}

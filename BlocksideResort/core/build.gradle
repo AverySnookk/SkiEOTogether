@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'dev.blockside'
+version = project.mod_version
+
+repositories {
+    maven { url = 'https://repo1.maven.org/maven2' }
+    mavenCentral()
+}
+
+dependencies {
+    // Minecraft ships Gson at runtime; core only compiles against it.
+    compileOnly 'com.google.code.gson:gson:2.11.0'
+    testImplementation 'com.google.code.gson:gson:2.11.0'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    // Bytecode level 21 so the simulation also runs on hosts with JDK 21;
+    // the mod itself is compiled and run on JDK 25.
+    toolchain { languageVersion = JavaLanguageVersion.of(providers.gradleProperty('coreJdk').getOrElse('21') as int) }
+}
+tasks.withType(JavaCompile).configureEach { options.release = 21; options.encoding = 'UTF-8' }
+
+test {
+    useJUnitPlatform()
+    testLogging { events 'passed', 'failed', 'skipped'; exceptionFormat 'full' }
+}
