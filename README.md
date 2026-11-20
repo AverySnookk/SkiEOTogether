@@ -78,9 +78,10 @@ lifts, guests, speed, money), a line per lift (status, liftie, riders, queue pos
 minute, a report on every building or lift copied from the other player, and on the friend's side a CHECK every
 10 s comparing the whole game with the host's (a DESYNC line names anything that differs, and a repair line what was fixed).
 
-If something lags or breaks: open the Together menu, **Session** tab, **Open session logs**, and send the newest file
-(both the host's and the friend's if you can). A pause right after joining, while the host's resort loads, is normal
-and is labelled as such in the log.
+If something lags or breaks: open the Together menu, **Session** tab, **Report a bug**. It opens the bug report page in
+your browser and the logs folder; attach the newest file there (both the host's and the friend's if you can). Nothing
+is uploaded from the game itself. A pause right after joining, while the host's resort loads, is normal and is
+labelled as such in the log.
 
 ## Same game version
 You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL7918").
