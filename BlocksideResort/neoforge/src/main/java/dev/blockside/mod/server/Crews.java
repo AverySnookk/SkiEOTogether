@@ -12,7 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -50,13 +50,13 @@ public final class Crews {
             BlockPos anchor = new BlockPos(j.anchor.x(), j.anchor.y(), j.anchor.z());
             if (!level.isLoaded(anchor)) continue;
             if (v == null || v.isRemoved()) {
-                v = EntityType.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
+                v = net.minecraft.world.entity.EntityTypes.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
                 if (v == null) continue;
                 var crew = r.crews.get(j.crewId);
                 v.setCustomName(Component.literal(crew == null ? "Crew" : crew.name));
                 v.setCustomNameVisible(true);
                 v.setNoAi(true);
-                v.setInvulnerable(true);
+                v.setPermanentlyInvulnerable(true);
                 v.setSilent(true);
                 v.addTag(BlocksideMod.TRANSIENT_TAG);
                 v.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SHOVEL));

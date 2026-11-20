@@ -37,6 +37,7 @@ public final class Snapshot {
     }
 
     public static Snapshot of(Resort r, long gameTime) {
+        r.refreshTrailStats();
         Snapshot s = new Snapshot();
         s.name = r.name;
         s.claimed = r.claimed();
@@ -102,7 +103,8 @@ public final class Snapshot {
             if (g.on && g.status != SnowGun.Status.RUNNING) s.alerts.add("Snow gun at " + g.pos + ": " + g.describe());
         if (r.ledger.cash() < 0) s.alerts.add("Resort is in debt: snowmaking paused.");
         for (var m : r.config.milestones) {
-            boolean done = r.progression.hasAward("milestone:" + m.id());
+            boolean done = r.progression.hasAward("milestone:" + m.id())
+                    || ("*".equals(m.target()) && r.progression.awarded().stream().anyMatch(a -> a.startsWith("built:")));
             String extra = "";
             if (!done && m.kind() == dev.blockside.core.economy.MilestoneKind.REPUTATION) {
                 long held = r.progression.sustainedFor(m.id(), gameTime);

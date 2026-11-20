@@ -1,6 +1,5 @@
 package dev.blockside.mod.block;
 
-import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -17,7 +16,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  * height the skier and groomer sample.
  */
 public class ResortSnowBlock extends Block {
-    public static final MapCodec<ResortSnowBlock> CODEC = simpleCodec(ResortSnowBlock::new);
     public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
     private static final VoxelShape[] SHAPES = new VoxelShape[9];
     static {
@@ -29,8 +27,6 @@ public class ResortSnowBlock extends Block {
         super(p);
         registerDefaultState(stateDefinition.any().setValue(LAYERS, 1));
     }
-
-    @Override protected MapCodec<? extends Block> codec() { return CODEC; }
 
     @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(LAYERS); }
 

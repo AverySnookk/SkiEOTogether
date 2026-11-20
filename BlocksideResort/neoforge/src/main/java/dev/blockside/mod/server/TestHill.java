@@ -37,12 +37,18 @@ public final class TestHill {
         return y0 + Math.min(20, (d + 2) / 3);
     }
 
-    public static void build(ServerPlayer p) {
-        if (job != null && !job.done()) { p.sendSystemMessage(Ui.text("A test hill is already being built.", ChatFormatting.RED)); return; }
+    /** Runs once the hill and its trails exist (used by /resort selftest). */
+    public static Runnable afterFinish;
+
+    public static int[] origin() { return new int[]{x0, y0, z0}; }
+
+    public static void build(ServerPlayer p) { build(p.blockPosition(), p); }
+
+    public static void build(BlockPos at, ServerPlayer p) {
+        if (job != null && !job.done()) { if (p != null) p.sendSystemMessage(Ui.text("A test hill is already being built.", ChatFormatting.RED)); return; }
         ServerLevel level = ResortServer.level();
-        BlockPos at = p.blockPosition();
         x0 = at.getX(); y0 = at.getY(); z0 = at.getZ();
-        owner = p.getUUID();
+        owner = p == null ? null : p.getUUID();
         job = new EditJournal();
         job.id = "testhill";
         job.label = "Test hill";
@@ -54,7 +60,8 @@ public final class TestHill {
                 if (!cur.equals(want)) job.edits.add(new EditJournal.Edit(x, y, z, cur, want));
             }
         }
-        p.sendSystemMessage(Ui.text("Building the test hill: " + job.edits.size() + " block changes (a few seconds)…", ChatFormatting.YELLOW));
+        if (p != null) p.sendSystemMessage(Ui.text("Building the test hill: " + job.edits.size() + " block changes (a few seconds)…", ChatFormatting.YELLOW));
+        dev.blockside.mod.BlocksideMod.LOG.info("[Blockside] test hill at {} {} {}: {} block changes", x0, y0, z0, job.edits.size());
     }
 
     public static void tick(ServerLevel level) {
@@ -67,7 +74,7 @@ public final class TestHill {
 
     private static void finish(ServerLevel level) {
         Resort r = ResortServer.resort();
-        ServerPlayer p = level.getServer().getPlayerList().getPlayer(owner);
+        ServerPlayer p = owner == null ? null : level.getServer().getPlayerList().getPlayer(owner);
         String who = p == null ? "server" : ResortServer.who(p);
         if (!r.claimed()) r.claim(who, new Pos(x0, y0, z0 - 20));
         Trail bunny = trail(level, r, "Bunny Hill", List.of(new int[]{x0, z0 - 58}, new int[]{x0, z0 - 1}), 9, 0.35, 330);
@@ -84,6 +91,8 @@ public final class TestHill {
                     + " · Lift bottom " + (x0 - 14) + " " + y0 + " " + (z0 + 6) + " → top " + (x0 - 14) + " " + (y0 + 20) + " " + (z0 - 66), ChatFormatting.AQUA));
             p.sendSystemMessage(Ui.button("Open the catalog", "/resort catalog", "Buy a ticket booth and a lift"));
         }
+        dev.blockside.mod.BlocksideMod.LOG.info("[Blockside] test hill finished; {} trails", r.trails.size());
+        if (afterFinish != null) { Runnable a = afterFinish; afterFinish = null; a.run(); }
     }
 
     private static Trail trail(ServerLevel level, Resort r, String name, List<int[]> line, double width, double extraDepth, double density) {
@@ -91,8 +100,9 @@ public final class TestHill {
         Trail t = r.addTrail(name, line, width, d);
         for (long k : t.tiles) {
             SnowTile s = r.snowpack.get(Pos.keyX(k), Pos.keyZ(k));
-            if (s.swe <= 0) s.addSnow((s.design - s.ground + extraDepth) * density / 1000.0, density);
-            s.lastTick = level.getDayTime();
+            // Enough snow to still cover the steps after a groomer compacts it to groomed density.
+            if (s.swe <= 0) s.addSnow((s.neededDepth(r.config.snow) + extraDepth) * r.config.snow.groomedDensity / 1000.0, density);
+            s.lastTick = level.getOverworldClockTime();
             SnowRenderer.render(level, s, r.config.snow);
         }
         return t;

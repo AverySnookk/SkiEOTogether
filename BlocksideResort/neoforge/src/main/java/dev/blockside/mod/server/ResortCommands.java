@@ -113,6 +113,22 @@ public final class ResortCommands {
                     p.sendSystemMessage(Ui.text("This reshapes a 61×105 area around you (uphill = north) and replaces what's there. Use a test world.", ChatFormatting.GOLD));
                     p.sendSystemMessage(Ui.button("Build the test hill here", "/resort testhill confirm", "Stand on flat ground at the bottom of where the hill should go"));
                 })).then(lit("confirm").executes(c -> admin(c, (p, r, x) -> TestHill.build(p)))))
+                .then(lit("selftest").requires(src -> src.getEntity() == null).then(Commands.argument("x", IntegerArgumentType.integer())
+                        .then(Commands.argument("y", IntegerArgumentType.integer()).then(Commands.argument("z", IntegerArgumentType.integer()).executes(c -> {
+                            SelfTest.start(new net.minecraft.core.BlockPos(IntegerArgumentType.getInteger(c, "x"), IntegerArgumentType.getInteger(c, "y"), IntegerArgumentType.getInteger(c, "z")));
+                            c.getSource().sendSuccess(() -> Ui.text("selftest started"), false);
+                            return 1;
+                        })))))
+                .then(lit("status").requires(src -> src.getEntity() == null).executes(c -> {
+                    for (String line : SelfTest.status()) c.getSource().sendSuccess(() -> Ui.text(line), false);
+                    return 1;
+                }))
+                .then(lit("console").requires(src -> src.getEntity() == null)
+                        .then(lit("openlift").executes(c -> { ResortServer.resort().lifts.values().forEach(l -> l.open = true); return 1; }))
+                        .then(lit("groom").executes(c -> { int n = SelfTest.groomBunnyHill(); c.getSource().sendSuccess(() -> Ui.text("groomed " + n + " tiles"), false); return 1; }))
+                        .then(lit("skip").then(Commands.argument("hours", IntegerArgumentType.integer(1, 48)).executes(c -> {
+                            ResortServer.setClock(ResortServer.now() + IntegerArgumentType.getInteger(c, "hours") * 1000L); return 1; })))
+                        .then(lit("save").executes(c -> { ResortServer.save(); return 1; })))
                 .then(lit("save").executes(c -> admin(c, (p, r, x) -> { ResortServer.save(); p.sendSystemMessage(Ui.text("Resort saved.", ChatFormatting.GREEN)); })))
                 .then(lit("admin")
                         .then(lit("cash").then(Commands.argument("amount", IntegerArgumentType.integer()).executes(c -> admin(c, (p, r, x) -> {
@@ -128,7 +144,7 @@ public final class ResortCommands {
                                         weather(p, r, StringArgumentType.getString(x, "kind"), IntegerArgumentType.getInteger(x, "hours")))))))
                         .then(lit("skip").then(Commands.argument("hours", IntegerArgumentType.integer(1, 48)).executes(c -> admin(c, (p, r, x) -> {
                             var l = ResortServer.level();
-                            l.setDayTime(l.getDayTime() + IntegerArgumentType.getInteger(x, "hours") * 1000L);
+                            ResortServer.setClock(l.getOverworldClockTime() + IntegerArgumentType.getInteger(x, "hours") * 1000L);
                             p.sendSystemMessage(Ui.text("Skipped ahead; the resort simulates the missed hours.", ChatFormatting.GREEN));
                         }))))
                         .then(lit("season").then(Commands.argument("season", StringArgumentType.word()).executes(c -> admin(c, (p, r, x) -> season(p, r, StringArgumentType.getString(x, "season"))))))));
@@ -141,7 +157,7 @@ public final class ResortCommands {
     }
 
     private static void give(ServerPlayer p, ItemStack s) {
-        if (!p.getInventory().add(s)) p.drop(s, false);
+        if (!p.getInventory().add(s)) p.level().addFreshEntity(new net.minecraft.world.entity.item.ItemEntity(p.level(), p.getX(), p.getY(), p.getZ(), s));
     }
 
     private static void buy(ServerPlayer p, Resort r, String id) {
@@ -199,8 +215,8 @@ public final class ResortCommands {
             case "summer" -> c.autumnDays + c.winterDays + c.springDays; default -> -1; };
         if (offset < 0) { p.sendSystemMessage(Ui.text("autumn | winter | spring | summer", ChatFormatting.RED)); return; }
         var l = ResortServer.level();
-        long year = Math.floorDiv(l.getDayTime(), 24000L) / c.yearDays();
-        l.setDayTime(((year + 1) * c.yearDays() + offset) * 24000L + 2000); // 08:00 on that day, next cycle
+        long year = Math.floorDiv(l.getOverworldClockTime(), 24000L) / c.yearDays();
+        ResortServer.setClock(((year + 1) * c.yearDays() + offset) * 24000L + 2000); // 08:00 on that day, next cycle
         p.sendSystemMessage(Ui.text("It's now " + s + ", 08:00.", ChatFormatting.GREEN));
     }
 }

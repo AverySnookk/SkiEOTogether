@@ -66,8 +66,8 @@ public final class GroomerRuntime {
         c.yaw = p.getYRot();
         c.lastGroomX = c.x; c.lastGroomZ = c.z;
         c.driver = p.getUUID();
-        c.body = display(level, Blocks.RED_CONCRETE.defaultBlockState(), -1.3F, -1.3F, -1.6F, 2.6F, 1.3F, 3.2F);
-        c.tiller = display(level, Blocks.LIGHT_GRAY_CONCRETE.defaultBlockState(), -1.5F, 0F, -2.6F, 3.0F, 0.5F, 0.9F);
+        c.body = display(level, dev.blockside.mod.BlockIO.parse("minecraft:red_concrete"), -1.3F, -1.3F, -1.6F, 2.6F, 1.3F, 3.2F);
+        c.tiller = display(level, dev.blockside.mod.BlockIO.parse("minecraft:light_gray_concrete"), -1.5F, 0F, -2.6F, 3.0F, 0.5F, 0.9F);
         if (c.body == null || c.tiller == null) return;
         place(c);
         if (!Compat.startRiding(p, c.body)) {
@@ -81,7 +81,7 @@ public final class GroomerRuntime {
 
     private static Display.BlockDisplay display(ServerLevel level, net.minecraft.world.level.block.state.BlockState s,
                                                  float tx, float ty, float tz, float sx, float sy, float sz) {
-        Display.BlockDisplay d = EntityType.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
+        Display.BlockDisplay d = net.minecraft.world.entity.EntityTypes.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
         if (d == null) return null;
         Compat.setDisplayBlock(d, s);
         Compat.setDisplayBox(d, tx, ty, tz, sx, sy, sz);

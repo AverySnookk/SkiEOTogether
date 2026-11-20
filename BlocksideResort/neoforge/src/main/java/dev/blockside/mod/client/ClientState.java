@@ -23,7 +23,7 @@ public final class ClientState {
         Minecraft mc = Minecraft.getInstance();
         if (ClientRequests.openDashboard) {
             ClientRequests.openDashboard = false;
-            mc.setScreen(new ResortScreen());
+            mc.gui.setScreen(new ResortScreen());
         }
         if (ClientRequests.toggleSkis) {
             ClientRequests.toggleSkis = false;

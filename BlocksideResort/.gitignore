@@ -6,3 +6,4 @@ runs/
 out/
 .idea/
 *.iml
+neoforge/run/

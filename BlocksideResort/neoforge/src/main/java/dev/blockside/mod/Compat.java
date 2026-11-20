@@ -48,9 +48,9 @@ public final class Compat {
     /** Scale and offset of a block display (box drawn from the entity position + translation). */
     public static void setDisplayBox(Display d, float tx, float ty, float tz, float sx, float sy, float sz) {
         try {
-            Class<?> tr = Class.forName("com.mojang.math.Transformation");
-            Object t = tr.getConstructor(org.joml.Vector3f.class, org.joml.Quaternionf.class, org.joml.Vector3f.class, org.joml.Quaternionf.class)
-                    .newInstance(new org.joml.Vector3f(tx, ty, tz), new org.joml.Quaternionf(), new org.joml.Vector3f(sx, sy, sz), new org.joml.Quaternionf());
+            Class<?> tr = com.mojang.math.Transformation.class;
+            Object t = new com.mojang.math.Transformation(new org.joml.Vector3f(tx, ty, tz), new org.joml.Quaternionf(),
+                    new org.joml.Vector3f(sx, sy, sz), new org.joml.Quaternionf());
             Method m = find(Display.class, "setTransformation", tr);
             if (m == null) throw new NoSuchMethodException("setTransformation");
             m.invoke(d, t);

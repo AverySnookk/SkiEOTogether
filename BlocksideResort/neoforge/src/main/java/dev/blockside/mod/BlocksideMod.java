@@ -37,7 +37,7 @@ public final class BlocksideMod {
         NeoForge.EVENT_BUS.addListener((EntityJoinLevelEvent e) -> {
             // Chairs/groomers/crews are rebuilt from resort state; drop stale copies loaded from chunks.
             if (!e.loadedFromDisk()) return;
-            if (e.getEntity().getTags().contains(TRANSIENT_TAG)) e.setCanceled(true);
+            if (e.getEntity().entityTags().contains(TRANSIENT_TAG)) e.setCanceled(true);
         });
         if (dist.isClient()) dev.blockside.mod.client.ClientInit.init(modBus);
         LOG.info("[Blockside] Blockside Resort loaded");

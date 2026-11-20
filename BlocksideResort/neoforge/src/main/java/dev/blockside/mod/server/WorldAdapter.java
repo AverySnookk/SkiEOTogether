@@ -31,7 +31,7 @@ public final class WorldAdapter {
         if (s.is(BlockTags.DIRT) || s.is(BlockTags.BASE_STONE_OVERWORLD) || s.is(BlockTags.SAND) || s.is(Blocks.GRAVEL)
                 || s.is(Blocks.SNOW_BLOCK) || s.is(Blocks.POWDER_SNOW) || s.is(Blocks.ICE) || s.is(Blocks.PACKED_ICE)
                 || s.is(Blocks.BLUE_ICE) || s.is(Blocks.CLAY) || s.is(Blocks.COBBLESTONE) || s.is(BlockTags.TERRACOTTA)
-                || s.is(Blocks.MOSSY_COBBLESTONE) || s.is(BlockTags.COAL_ORES) || s.is(BlockTags.IRON_ORES)
+                || s.is(Blocks.MOSSY_COBBLESTONE) || s.is(BlockTags.IRON_ORES)
                 || s.is(BlockTags.COPPER_ORES))
             return SiteProbe.Kind.TERRAIN;
         return SiteProbe.Kind.BUILT;

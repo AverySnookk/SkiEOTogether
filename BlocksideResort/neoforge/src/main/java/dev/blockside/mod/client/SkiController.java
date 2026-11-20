@@ -20,7 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * Client-side skiing for responsive control. Each tick (right before vanilla movement) it samples the
@@ -47,9 +46,9 @@ public final class SkiController {
         if (p != null) {
             state.velocity = new Vec3(p.getDeltaMovement().x * 20, 0, p.getDeltaMovement().z * 20);
             state.headingDeg = p.getYRot();
-            p.displayClientMessage(Component.literal(enabled ? "Skis on. W tuck, S brake, A/D carve, Ctrl dig edges, Space hop." : "Skis off."), true);
+            p.sendOverlayMessage(Component.literal(enabled ? "Skis on. W tuck, S brake, A/D carve, Ctrl dig edges, Space hop." : "Skis off."));
         }
-        PacketDistributor.sendToServer(new Net.SkiMode(enabled));
+        net.neoforged.neoforge.client.network.ClientPacketDistributor.sendToServer(new Net.SkiMode(enabled));
     }
 
     /** The shared surface, read from the blocks the client renders. */

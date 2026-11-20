@@ -27,8 +27,15 @@ cd BlocksideResort
 ```
 
 The mod build needs `maven.neoforged.net` and Mojang's servers. If you have no JDK 25, Gradle downloads one
-through the foojay resolver. `neo_version` in `gradle.properties` is set to `26.3.0.1-beta`; if that
-build number isn't published, change it to the newest 26.3 build listed on the NeoForge site.
+through the foojay resolver (or point Gradle at one: `-Porg.gradle.java.installations.paths=/path/to/jdk25`).
+Built and tested with NeoForge `26.3.0.115` (`neo_version` in `gradle.properties`).
+
+Testing on a dedicated server with nobody online: Minecraft pauses ticking 60 s after the last player leaves,
+which also pauses the resort. Set `pause-when-empty-seconds=-1` in `server.properties` for unattended tests.
+Console-only test commands (server console or RCON): `/resort selftest <x> <y> <z>` builds the test hill and buys,
+places and hires the ticket booth, groomer garage and chairlift, plus a running snow gun; `/resort status` prints the
+resort; `/resort console openlift|groom|skip <h>|save`. Force-load the area first
+(`/forceload add -48 -96 48 48` for a selftest at 0 80 0).
 
 To install, drop `blockside-resort-0.1.0.jar` into `mods/` on the server and on every client.
 
@@ -135,16 +142,21 @@ snapshots, the 18°/45°/63° fixtures, grooming mass conservation, snow gun sta
 acceleration/terminal speed/braking/powder vs groomed/ice grip, lift clearance and loop continuity, a
 full lift job, and the level-2 unlock. The Gradle project configures with ModDevGradle.
 
-**Not verified here:** the `neoforge` module has **not been compiled or launched**. This environment couldn't
-reach `maven.neoforged.net`, Mojang's servers or a JDK 25 download. The mod code was type-checked against the
-core only. I wrote it against the NeoForge/Minecraft API as I know it for the 26.x line (`Identifier`,
-`DeferredRegister` + `Properties.setId`, `InteractionResult` returns, `ClickEvent.RunCommand`,
-`EntitySpawnReason`, `getValue` registry lookups). Expect some compile fixes on the first real build. The
-calls most likely to drift are isolated in `Compat.java` (block-display state/transform, riding, client
-input) and use reflection with logged fallbacks.
+**Verified on a real 26.3 dedicated server** (NeoForge 26.3.0.115, JDK 25), driven via RCON with `/resort selftest`:
+the mod loads; the test hill builds (~100k blocks) with its three trails; ticket booth, groomer garage and
+chairlift are bought, validated, placed and hired; a second hire click charged nothing; crews build every
+stage and the booth, garage, lift stations and 5 towers appear in the world; the lift registers; guests buy
+tickets (revenue, rides, reputation 50 → 70); the revenue, construction, first-lift and reputation-60 milestones
+pay once and the resort reaches level 2; the snow gun runs; the snowpack renders as snow layers and grooming turns
+Bunny Hill into corduroy blocks while keeping it 100% covered; jobs restarted mid-stage resume where they left
+off; after a server restart cash, XP, reputation, milestones, snow and rendered blocks are identical.
+
+**Not verified yet (needs a player client):** the Resort Tablet screen and HUD, kit placement preview clicks,
+riding the chairlift (chairs only spawn with a player nearby), driving the snowcat, and client-side skiing.
+These compile against 26.3; the reflective calls in `Compat.java` were checked against the 26.3 sources.
 
 **Next steps, in order:**
-1. First real build on 26.3; fix API drift; launch, walk the playtest path, restart and re-check.
+1. Walk the playtest path in a client (`./gradlew :neoforge:runClient`) and tune ski/lift feel.
 2. NeoForge GameTests for the in-world parts (zone placement, crew build, lift boarding, snow rendering).
 3. Visual placement preview with block outlines instead of particles; visible zone fencing.
 4. Crew-assigned grooming, lift queues with visible guests, guest pathing over a graph of paths/buildings/runs.

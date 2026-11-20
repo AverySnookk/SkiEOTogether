@@ -46,14 +46,22 @@ public final class ResortServer {
     private static Path dir;
     private static final Set<UUID> skiing = new HashSet<>();
     private static long ticks;
+    public static volatile String lastError = "none";
+    public static long ticks() { return ticks; }
 
     private ResortServer() {}
 
     public static Resort resort() { return resort; }
     public static MinecraftServer server() { return server; }
     public static ServerLevel level() { return server.overworld(); }
-    public static long now() { return level().getDayTime(); }
+    public static long now() { return level().getOverworldClockTime(); }
     public static String who(Player p) { return p.getName().getString(); }
+
+    /** Sets the overworld clock (26.x replaced level day time with world clocks). */
+    public static void setClock(long ticks) {
+        level().registryAccess().get(net.minecraft.world.clock.WorldClocks.OVERWORLD)
+                .ifPresent(clock -> server.clockManager().setTotalTicks(clock, ticks));
+    }
 
     // ------------------------------------------------------------------ lifecycle / persistence
 
@@ -135,7 +143,7 @@ public final class ResortServer {
     public static void tick(MinecraftServer s) {
         if (resort == null) return;
         ServerLevel level = s.overworld();
-        long t = level.getDayTime();
+        long t = level.getOverworldClockTime();
         ticks++;
         try {
             if (ticks % resort.config.crewStepTicks == 0) {
@@ -160,7 +168,8 @@ public final class ResortServer {
             }
             if (ticks % 40 == 0) Guests.tick(level, resort);
             if (ticks % 6000 == 0) save();
-        } catch (RuntimeException e) {
+        } catch (Throwable e) {
+            lastError = e.toString();
             BlocksideMod.LOG.error("[Blockside] tick error", e);
         }
     }

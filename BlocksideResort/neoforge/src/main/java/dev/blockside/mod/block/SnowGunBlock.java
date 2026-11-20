@@ -1,6 +1,5 @@
 package dev.blockside.mod.block;
 
-import com.mojang.serialization.MapCodec;
 import dev.blockside.mod.server.ResortServer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -22,15 +21,12 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 /** Fan-style snow gun. Throws snow in the direction it faces (the way the placer was looking). */
 public class SnowGunBlock extends HorizontalDirectionalBlock {
-    public static final MapCodec<SnowGunBlock> CODEC = simpleCodec(SnowGunBlock::new);
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 14, 14);
 
     public SnowGunBlock(Properties p) {
         super(p);
         registerDefaultState(stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH));
     }
-
-    @Override protected MapCodec<? extends HorizontalDirectionalBlock> codec() { return CODEC; }
 
     @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING); }
 

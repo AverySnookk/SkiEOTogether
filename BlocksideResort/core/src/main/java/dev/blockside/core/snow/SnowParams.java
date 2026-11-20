@@ -22,7 +22,7 @@ public final class SnowParams {
     /** Grooming: max SWE moved per tile per pass. */
     public double groomMovePerPass = 0.03;
     /** Base depth (m) required above the designed fill for a tile to count as covered. */
-    public double minBase = 0.25;
+    public double minBase = 0.15;
     /** Deepest visible snow rendered as blocks above ground. */
     public double maxVisibleDepth = 2.0;
 }

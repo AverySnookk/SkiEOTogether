@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.villager.Villager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +24,14 @@ public final class Guests {
     public static void tick(ServerLevel level, Resort r) {
         long now = level.getGameTime();
         visible.removeIf(g -> { if (g.until < now || g.v.isRemoved()) { g.v.discard(); return true; } return false; });
-        double hour = Weather.hourOfDay(level.getDayTime());
+        double hour = Weather.hourOfDay(level.getOverworldClockTime());
         if (r.guestsOnMountain < 1 || hour < r.config.openHour || hour >= r.config.closeHour) return;
         for (Facility f : r.facilities.values()) {
             if (!"ticket_booth".equals(f.catalogId) || f.entrance == null) continue;
             if (level.getNearestPlayer(f.anchor.x(), f.anchor.y(), f.anchor.z(), 48, false) == null) continue;
             int want = (int) Math.min(r.config.maxVisibleGuests, Math.ceil(r.guestsOnMountain / 10.0));
             if (visible.size() >= want) continue;
-            Villager v = EntityType.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
+            Villager v = net.minecraft.world.entity.EntityTypes.VILLAGER.create(level, EntitySpawnReason.MOB_SUMMONED);
             if (v == null) continue;
             v.setCustomName(Component.literal("Guest"));
             v.addTag(BlocksideMod.TRANSIENT_TAG);

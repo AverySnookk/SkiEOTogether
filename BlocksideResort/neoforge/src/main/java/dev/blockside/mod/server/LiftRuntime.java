@@ -82,8 +82,8 @@ public final class LiftRuntime {
     }
 
     private static Chair spawnChair(ServerLevel level) {
-        Display.BlockDisplay seat = EntityType.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
-        Display.BlockDisplay hanger = EntityType.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
+        Display.BlockDisplay seat = net.minecraft.world.entity.EntityTypes.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
+        Display.BlockDisplay hanger = net.minecraft.world.entity.EntityTypes.BLOCK_DISPLAY.create(level, EntitySpawnReason.TRIGGERED);
         if (seat == null || hanger == null) return null;
         Compat.setDisplayBlock(seat, Blocks.DARK_OAK_SLAB.defaultBlockState());
         Compat.setDisplayBox(seat, -0.5F, -0.6F, -0.45F, 1.0F, 0.5F, 0.9F);
