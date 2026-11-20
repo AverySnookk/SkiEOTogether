@@ -36,28 +36,33 @@ Pop-ups at the top of the screen tell you when someone joins or leaves, and when
 
 | Shared live | |
 |---|---|
-| Buildings, decorations, park features, snow guns | placed, moved, removed, opened/closed by anyone |
-| Trails | drawn, extended, removed, renamed, difficulty/grooming/night-skiing, by anyone |
+| Buildings, decorations, park features, snow guns | placed, moved, removed, opened/closed by anyone; shows up for the others in about a tenth of a second |
+| Trails | drawn, extended, removed, renamed, difficulty/grooming/night-skiing, by anyone; shared right away |
 | Lifts | built, removed, speed and hours, by anyone (can be opened and bulldozed everywhere); a friend's lift links to its trails and starts on everyone's game |
-| Walkways (paths) | painted or erased by anyone; shared about half a second after you finish a stroke |
-| Cleared brush / ground cover | cleared by anyone; shared about half a second after you finish |
+| Walkways (paths) | painted or erased by anyone; appears on the other screens while you are still painting (about 4 times a second) |
+| Cleared brush / ground cover | cleared by anyone; appears on the other screens while you are still clearing |
 | Felled trees | cleared by anyone (clearing tool, bulldozing, trail and lift corridors); shared within a second, never charged twice |
-| Terrain shaping | raise, lower, smooth, flatten by anyone; shared about 2 s after you finish a stroke (applied in ~15 ms, no reload) |
+| Terrain shaping | raise, lower, smooth, flatten by anyone; shared about once a second while you shape; the other games redraw it once you pause for 2 s (no reload) |
 | Base area and villages | follow from the shared buildings, lifts and walkways, so they come out the same on every game |
 | Guests | each game runs its own guests through the normal arrivals; a friend's crowd is trimmed if it grows bigger than the host's |
 | Money | the host's balance is the resort's balance; friends' builds are charged to it |
-| Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone |
+| Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone. The game's month and year reports pause only the player reading them (the host's pauses everyone); a friend catches up after Continue |
 | Resort management | open/closed status, discipline policy, ticket price, marketing campaigns |
-| Staff | hiring, firing and assigning staff (lifties too), by anyone. Each game's list of job candidates changes over time, so a friend can only hire someone who is also on the host's list; otherwise the hire is undone with a message (Refresh lines the lists up again) |
+| Staff | hiring, firing and assigning staff (lifties too), by anyone, shared right away. Each game's list of job candidates changes over time, so a friend can only hire someone who is also on the host's list; otherwise the hire is undone with a message (Refresh lines the lists up again) |
 | Players | everyone sees everyone else as a skier/walker with a name tag |
 
 Nothing needs a refresh any more in normal play: no reload, no camera jump, no freeze.
 
-Walkways, brush and terrain: if two players change the same kind at the very same moment, the last one to finish wins
-and the other is undone. Take turns.
+Walkways, brush and terrain: only the cells that changed are sent, so several players can paint, clear or shape in
+different places at the same time. If two players change the very same spot at the same moment, the last one wins.
 
 Guests are the same crowd size and go to the same lifts, trails and buildings, but they are not the same individual
 people on every screen (copying hundreds of guests live would lag every game).
+
+### Self-repair
+Every 10 seconds each friend's game compares everything with the host's: every building and lift with its settings,
+trails, staff, money, clock, walkways, brush and terrain. If something still differs 10 seconds later, that game asks
+the host for just that part and fixes itself, without a reload. The session log notes it as DESYNC and repair.
 
 ### Resort refresh
 Still there as a safety net: the host's game saves (over the resort being hosted, like pressing Save), everyone reloads
@@ -71,7 +76,7 @@ everything that was shared, any errors, every time the game froze for more than 
 doing at that moment), any mod step that took longer than 40 ms, a status line every minute (players, buildings,
 lifts, guests, speed, money), a line per lift (status, liftie, riders, queue posts), the network messages of the last
 minute, a report on every building or lift copied from the other player, and on the friend's side a CHECK every
-30 s comparing the whole game with the host's (a DESYNC line names anything that differs).
+10 s comparing the whole game with the host's (a DESYNC line names anything that differs, and a repair line what was fixed).
 
 If something lags or breaks: open the Together menu, **Session** tab, **Open session logs**, and send the newest file
 (both the host's and the friend's if you can). A pause right after joining, while the host's resort loads, is normal
