@@ -97,7 +97,8 @@ minute, a report on every building or lift copied from the other player, and on 
 If something lags or breaks: open the Together menu, **Session** tab, **Report a bug**. It opens the bug report page in
 your browser and the logs folder; attach the newest file there (both the host's and the friend's if you can). Nothing
 is uploaded from the game itself. A pause right after joining, while the host's resort loads, is normal and is
-labelled as such in the log.
+labelled as such in the log. If the Together helper ever hits an unexpected error, it keeps running and writes it to
+`mods\SkiEOTogether\bridge\helper-errors.log`; attach that file too if it exists.
 
 ## Same game version
 You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL7918").
