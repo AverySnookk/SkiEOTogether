@@ -32,6 +32,12 @@ Everything is in the game: click **Together** on the main menu (next to Mods) or
 
 Pop-ups at the top of the screen tell you when someone joins or leaves, and when a refresh is needed.
 
+**Pings**: quickly click the **middle mouse button** on any spot to drop a big arrow there with your name, so
+everyone can see what you are talking about. Each player has their own colour (the host is gold; then blue, red,
+green, purple, orange, cyan, pink). Everyone has one ping: middle-click somewhere else and your arrow moves there.
+Middle-click near a ping to remove it (it doesn't have to be exact). Holding the middle button still turns the camera
+as usual. A player's ping goes away when they leave.
+
 ## What is shared
 
 | Shared live | |
@@ -48,7 +54,7 @@ Pop-ups at the top of the screen tell you when someone joins or leaves, and when
 | Money | the host's balance is the resort's balance; friends' builds are charged to it |
 | Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone. The game's month and year reports pause only the player reading them (the host's pauses everyone); a friend catches up after Continue |
 | Resort management | open/closed status, discipline policy, ticket price, marketing campaigns |
-| Staff | hiring, firing and assigning staff (lifties too), by anyone, shared right away. Each game's list of job candidates changes over time, so a friend can only hire someone who is also on the host's list; otherwise the hire is undone with a message (Refresh lines the lists up again) |
+| Staff | hiring, firing, assigning and sending staff home (lifties too), by anyone, shared right away. Each game's list of job candidates changes over time: when the person someone hired isn't on your list, your game hires a candidate with the same role in their place (names can differ, jobs and workplaces match). Lifties stay at their lift when a copy of it is rebuilt |
 | Players | everyone sees everyone else as a skier/walker with a name tag |
 
 Nothing needs a refresh any more in normal play: no reload, no camera jump, no freeze.
@@ -62,7 +68,9 @@ people on every screen (copying hundreds of guests live would lag every game).
 ### Self-repair
 Every 10 seconds each friend's game compares everything with the host's: every building and lift with its settings,
 trails, staff, money, clock, walkways, brush and terrain. If something still differs 10 seconds later, that game asks
-the host for just that part and fixes itself, without a reload. The session log notes it as DESYNC and repair.
+the host for just that part and fixes itself, without a reload. Buildings are fixed one by one, and anything someone is
+still placing (or the host hasn't confirmed yet) is left alone, so a repair never undoes your recent work. The session
+log notes it as DESYNC and repair.
 
 ### Resort refresh
 Still there as a safety net: the host's game saves (over the resort being hosted, like pressing Save), everyone reloads
