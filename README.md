@@ -101,7 +101,8 @@ labelled as such in the log. If the Together helper ever hits an unexpected erro
 `mods\SkiEOTogether\bridge\helper-errors.log`; attach that file too if it exists.
 
 ## Same game version
-You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL7918").
+You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL8198").
+The newest Together release is tested on **CL8198** (the Ski-E-O update of November 20, 2026).
 Together refuses to connect different builds and tells you why. Saves made by a newer build can't be opened by an older one.
 Walkway, brush, tree and terrain sharing and lift linking use a small native module (`Native\TogetherNative.dll`) matched
 to the game's code. If a game update changes that code, the log says so and those fall back to being shared through a
