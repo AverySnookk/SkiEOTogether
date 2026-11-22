@@ -58,7 +58,7 @@ list use the same colours.
 | Felled trees | cleared by anyone (clearing tool, bulldozing, trail and lift corridors); shared within a second, never charged twice |
 | Terrain shaping | raise, lower, smooth, flatten by anyone; shared about once a second while you shape; the other games redraw it once you pause for 2 s (no reload) |
 | Base area and villages | follow from the shared buildings, lifts and walkways, so they come out the same on every game |
-| Guests | each game runs its own guests through the normal arrivals; a friend's crowd is trimmed if it grows bigger than the host's |
+| Guests | each game runs its own guests through the normal arrivals. Since the November 21 Ski-E-O update (CL8231) mods can no longer remove guests, so a friend's crowd can end up bigger or smaller than the host's |
 | Money | the host's balance is the resort's balance; friends' builds are charged to it |
 | Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone. The game's month and year reports pause only the player reading them (the host's pauses everyone); a friend catches up after Continue |
 | Resort management | open/closed status, discipline policy, ticket price, marketing campaigns |
@@ -70,7 +70,7 @@ Nothing needs a refresh any more in normal play: no reload, no camera jump, no f
 Walkways, brush and terrain: only the cells that changed are sent, so several players can paint, clear or shape in
 different places at the same time. If two players change the very same spot at the same moment, the last one wins.
 
-Guests are the same crowd size and go to the same lifts, trails and buildings, but they are not the same individual
+Guests go to the same lifts, trails and buildings, but they are not the same individual
 people on every screen (copying hundreds of guests live would lag every game).
 
 ### Self-repair
@@ -101,10 +101,10 @@ labelled as such in the log. If the Together helper ever hits an unexpected erro
 `mods\SkiEOTogether\bridge\helper-errors.log`; attach that file too if it exists.
 
 ## Same game version
-You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL8198").
-The newest Together release is tested on **CL8198** (the Ski-E-O update of November 20, 2026).
+You and your friends must be on the **same Ski-E-O build** (shown at the bottom of the main menu, e.g. "Build: CL8231").
+The newest Together release is made for **CL8231** (the Ski-E-O update of November 21, 2026).
 Together refuses to connect different builds and tells you why. Saves made by a newer build can't be opened by an older one.
-Walkway, brush, tree and terrain sharing and lift linking use a small native module (`Native\TogetherNative.dll`) matched
+Walkway, brush, tree and terrain sharing, copying friends' lifts and building variants, and lift linking use a small native module (`Native\TogetherNative.dll`) matched
 to the game's code. If a game update changes that code, the log says so and those fall back to being shared through a
 refresh; everything else keeps working.
 
