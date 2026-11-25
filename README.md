@@ -60,12 +60,15 @@ list use the same colours.
 | Base area and villages | follow from the shared buildings, lifts and walkways, so they come out the same on every game |
 | Guests | each game runs its own guests through the normal arrivals. Since the November 21 Ski-E-O update (CL8231) mods can no longer remove guests, so a friend's crowd can end up bigger or smaller than the host's |
 | Money | the host's balance is the resort's balance; friends' builds are charged to it |
-| Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone. The game's month and year reports pause only the player reading them (the host's pauses everyone); a friend catches up after Continue |
+| Clock | pause, speed and calendar follow the host; a friend changing speed does it for everyone. The game's month and year reports pause only the player reading them (the host's pauses everyone); a friend catches up after Continue. The Build menu pauses no one during a session: Together turns the game's "Pause in menus" option off while you play together and back on when you leave |
 | Resort management | open/closed status, discipline policy, ticket price, marketing campaigns |
 | Staff | hiring, firing, assigning and sending staff home (lifties too), by anyone, shared right away. Each game's list of job candidates changes over time: when the person someone hired isn't on your list, your game hires a candidate with the same role in their place (names can differ, jobs and workplaces match). Lifties stay at their lift when a copy of it is rebuilt |
 | Players | everyone sees everyone else as a skier/walker with a name tag |
 
 Nothing needs a refresh any more in normal play: no reload, no camera jump, no freeze.
+
+**Not shared yet:** fences, ropes, festoon lights and hanging lanterns (a friend's disappear after a refresh, and the
+host's don't show for friends), and area names (each player sees their own).
 
 Walkways, brush and terrain: only the cells that changed are sent, so several players can paint, clear or shape in
 different places at the same time. If two players change the very same spot at the same moment, the last one wins.
