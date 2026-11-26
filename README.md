@@ -13,22 +13,29 @@ resort automatically, and from then on what anyone builds shows up for everyone.
 
 ## How to play
 
-Everything is in the game: click **Together** on the main menu (next to Mods) or in the pause menu (Esc).
+Everything is in the game: click **Together** on the main menu (next to Mods) or in the pause menu (Esc). The menu
+has three pages: **Join a friend**, **Host a game** and **Settings**.
 
-**Host**
-- *Start a NEW resort and host it*: the game's own New Game screen opens; once your new resort is up it is
-  saved and hosted automatically.
-- *Host one of your saves*: pick any save from the list (autosaves behind *Show autosaves too*).
-- In the pause menu: *Host THIS resort* saves the resort you're in and starts hosting.
+**Host a game**
+- *New resort*: the game's own New Game screen opens; once your new resort is up it is saved and hosted
+  automatically.
+- *Host one of your saves*: press **Host** next to any save (autosaves behind *Show autosaves*). A loading screen
+  shows while it opens.
+- In the pause menu: *Host this resort* saves the resort you're in and starts hosting.
 
-**Join**
-- Click the friend who is hosting in the **Steam friends** list (people playing Ski-E-O have a dot).
+**Join a friend**
+- Your Steam friends who are playing Ski-E-O are listed; press the one who is hosting.
   No address, VPN or port needed: it goes through Steam's relay network.
-- Or type an address (LAN, Radmin/Tailscale/ZeroTier VPN address, or a forwarded TCP port 7777) and click Join.
-- The host's resort downloads and opens by itself as `Together_<resort>`, a separate copy.
+- You land in their **lobby**: the resort's name, the host and everyone already playing. The resort downloads while
+  you wait; press **Join** when you're ready (or **Leave**). A loading screen covers the download, the load and the
+  catch-up with the host, so you arrive in a resort that is already in sync.
+- The host's resort opens as `Together_<resort>`, a separate copy.
 
-**Session** tab: players, **Refresh resort for everyone** (host) / **Ask the host to refresh** (friend),
-**Leave session**. Name and an optional password are at the top of the menu (everyone types the same password).
+**Settings**: your name, an optional password (everyone types the same one), and **Join by address** (LAN,
+Radmin/Tailscale/ZeroTier VPN address, or a forwarded TCP port 7777).
+
+**In a session** the menu shows the players, **Refresh everyone** (host) / **Ask for a refresh** (friend),
+**Stop hosting** / **Leave**, **Session logs** and **Report a bug**.
 
 **Lost connection**: if a friend's connection drops (Wi-Fi blip, VPN hiccup), their game keeps the resort open and
 reconnects by itself for up to 90 seconds. They can keep playing meanwhile; what they build is shared once they are
@@ -99,7 +106,7 @@ copied from the other player, on the friend's side a CHECK every 10 s comparing 
 DESYNC line names anything that differs, and a repair line what was fixed), and a summary of the whole session at the
 end. Outside sessions Together logs to `mods\SkiEOTogether\logs\Together_game_latest.log` (replaced at each game start).
 
-If something lags or breaks: open the Together menu, **Session** tab, **Report a bug**. It opens the bug report page in
+If something lags or breaks: open the Together menu during the session and press **Report a bug**. It opens the bug report page in
 your browser and the logs folder; attach the newest file there (both the host's and the friend's if you can). Nothing
 is uploaded from the game itself. A pause right after joining, while the host's resort loads, is normal and is
 labelled as such in the log. If the Together helper ever hits an unexpected error, it keeps running and writes it to
