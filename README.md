@@ -80,7 +80,8 @@ Every 10 seconds each friend's game compares everything with the host's: every b
 trails, staff, money, clock, walkways, brush and terrain. If something still differs 10 seconds later, that game asks
 the host for just that part and fixes itself, without a reload. Buildings are fixed one by one, and anything someone is
 still placing (or the host hasn't confirmed yet) is left alone, so a repair never undoes your recent work. The session
-log notes it as DESYNC and repair.
+log notes it as DESYNC and repair. Guest counts are not compared, since crowds can differ (see the table above).
+(From 0.14.7 to 0.14.10 the drifting guest counts kept this check from ever fixing anything; fixed in 0.14.11.)
 
 ### Resort refresh
 Still there as a safety net: the host's game saves (over the resort being hosted, like pressing Save), everyone reloads
@@ -91,10 +92,12 @@ if something looks different on two screens.
 Every time you host or join, Together writes a log to `mods\SkiEOTogether\logs\`, named like
 `Together_host_2026-11-18_17-20-35.log` or `Together_friend_...`. It records your game build and Together version,
 everything that was shared, any errors, every time the game froze for more than half a second (and what the mod was
-doing at that moment), any mod step that took longer than 40 ms, a status line every minute (players, buildings,
-lifts, guests, speed, money), a line per lift (status, liftie, riders, queue posts), the network messages of the last
-minute, a report on every building or lift copied from the other player, and on the friend's side a CHECK every
-10 s comparing the whole game with the host's (a DESYNC line names anything that differs, and a repair line what was fixed).
+doing at that moment), every moment longer than 30 ms with where the time went, a status line every minute (players,
+buildings, lifts, guests, speed, money, how long each part of the mod and each kind of message took), a line per lift
+(status, liftie, riders, queue posts), the network messages of the last minute, a report on every building or lift
+copied from the other player, on the friend's side a CHECK every 10 s comparing the whole game with the host's (a
+DESYNC line names anything that differs, and a repair line what was fixed), and a summary of the whole session at the
+end. Outside sessions Together logs to `mods\SkiEOTogether\logs\Together_game_latest.log` (replaced at each game start).
 
 If something lags or breaks: open the Together menu, **Session** tab, **Report a bug**. It opens the bug report page in
 your browser and the logs folder; attach the newest file there (both the host's and the friend's if you can). Nothing
