@@ -26,10 +26,11 @@ has three pages: **Join a friend**, **Host a game** and **Settings**.
 **Join a friend**
 - Your Steam friends who are playing Ski-E-O are listed; press the one who is hosting.
   No address, VPN or port needed: it goes through Steam's relay network.
-- You land in their **lobby**, a little snowy stage where everyone is a skier: standing on their skis if they're
-  already playing, sitting on a bench if they're still in the lobby. The resort downloads while
+- You land in their **lobby**, a little snowy stage where everyone is one of the game's own 3D guests: standing
+  with their skis if they're already playing, sitting on a bench if they're still in the lobby. The resort downloads while
   you wait; press **Join** when you're ready (or **Leave**). A loading screen covers the download, the load and the
-  catch-up with the host, so you arrive in a resort that is already in sync.
+  catch-up with the host, so you arrive in a resort that is already in sync, and the camera flies down from the sky
+  to your view.
 - The host's resort opens as `Together_<resort>`, a separate copy.
 
 **Settings**: your name, an optional password (everyone types the same one), and **Join by address** (LAN,
