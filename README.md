@@ -119,9 +119,13 @@ Together is shared directly (not through the Mod Manager catalog, which doesn't 
 
 1. Needs UE4SS 4 (the same setup Z's Mod Manager installs for other Ski-E-O mods; installing any catalog mod once
    sets it up) and Steam running.
-2. Close the game. Unzip so that the `SkiEOTogether` folder lands in `...\steamapps\common\skieogame\mods\`
-   (you should end up with `mods\SkiEOTogether\mod.ini`). Updating: replace the folder; keep its `bridge` folder if
-   you want to keep your name and password settings.
+2. Close the game. From the [latest release](https://github.com/AverySnookk/SkiEOTogether/releases/latest) download
+   **`SkiEOTogether-<version>-installer.exe`** and run it. It finds Ski-E-O through Steam and installs or updates
+   Together in one click (your Together settings and logs are kept). Windows may say "Windows protected your PC"
+   because the installer isn't code-signed: **More info**, then **Run anyway**.
+   By hand instead: unzip `SkiEOTogether-<version>-manual-install.zip` so that the `SkiEOTogether` folder lands in
+   `...\steamapps\common\skieogame\mods\` (you should end up with `mods\SkiEOTogether\mod.ini`). Updating by hand:
+   replace the folder; keep its `bridge` folder if you want to keep your name and password settings.
 3. **Everyone must use the same Together version and the same Ski-E-O build** (the main menu shows the build).
 4. A small helper (`Network\TogetherNet.exe`) starts in the background with the game and closes ~20 s after it;
    while it runs, Steam shows Ski-E-O as running. Windows may ask to allow it through the firewall the first time
@@ -137,6 +141,6 @@ Together is shared directly (not through the Mod Manager catalog, which doesn't 
 
 ## Uninstall
 
-Delete the `SkiEOTogether` folder. Joined copies are the `Together_*` saves in
+Run the installer and press **Uninstall Together**, or delete the `SkiEOTogether` folder. Joined copies are the `Together_*` saves in
 `%LOCALAPPDATA%\Ski-E-O\SaveGames` (delete them while the game is running, or Steam Cloud restores them).
 
