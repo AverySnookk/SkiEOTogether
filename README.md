@@ -26,7 +26,8 @@ has three pages: **Join a friend**, **Host a game** and **Settings**.
 **Join a friend**
 - Your Steam friends who are playing Ski-E-O are listed; press the one who is hosting.
   No address, VPN or port needed: it goes through Steam's relay network.
-- You land in their **lobby**: the resort's name, the host and everyone already playing. The resort downloads while
+- You land in their **lobby**, a little snowy stage where everyone is a skier: standing on their skis if they're
+  already playing, sitting on a bench if they're still in the lobby. The resort downloads while
   you wait; press **Join** when you're ready (or **Leave**). A loading screen covers the download, the load and the
   catch-up with the host, so you arrive in a resort that is already in sync.
 - The host's resort opens as `Together_<resort>`, a separate copy.
@@ -34,7 +35,7 @@ has three pages: **Join a friend**, **Host a game** and **Settings**.
 **Settings**: your name, an optional password (everyone types the same one), and **Join by address** (LAN,
 Radmin/Tailscale/ZeroTier VPN address, or a forwarded TCP port 7777).
 
-**In a session** the menu shows the players, **Refresh everyone** (host) / **Ask for a refresh** (friend),
+**In a session** the menu shows the same stage with everyone on their skis, **Refresh everyone** (host) / **Ask for a refresh** (friend),
 **Stop hosting** / **Leave**, **Session logs** and **Report a bug**.
 
 **Lost connection**: if a friend's connection drops (Wi-Fi blip, VPN hiccup), their game keeps the resort open and
